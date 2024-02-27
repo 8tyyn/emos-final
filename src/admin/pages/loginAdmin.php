@@ -21,7 +21,7 @@ echo $_POST['email'];
         exit();
     }
     try {
-        $query = "SELECT * FROM administrateur WHERE email=:email AND password=:password";
+        $query = "SELECT * FROM vc_users_admin WHERE admin_email=:email AND password=:password";
     $stmnt = $BDD->prepare($query);
     $stmnt->bindParam(':email',$email);
     $stmnt->bindParam(':password',$password);
@@ -40,7 +40,7 @@ echo $_POST['email'];
         exit(); 
     }
     else {
-        header('location: loginAdmin.html'); 
+        header('location: loginAdmin.php'); 
 }   
 
 

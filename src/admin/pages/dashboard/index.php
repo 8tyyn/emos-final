@@ -1,3 +1,14 @@
+<?php
+session_start();
+  require_once "../../controllers/AdminController.php"; 
+  require_once "../../controllers/ClientController.php"; 
+  $client = new ClientController(); 
+  $admin = new AdminController(); 
+  $clients= $client->getClients() ; 
+  $admins= $admin->getAdmins() ; 
+  $teachersCount = $client->getTeacherCount($clients) ; 
+  $studentsCount = $client->getStudentCount($clients) ; 
+?>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -64,9 +75,21 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             <div class="row">
               <div class="col-md-12">
                 <ul class="nav nav-pills">
-                  <li class="active"><a href="#">Aministrateurs <span class="badge">2</span></a></li>
-                  <li class="active"><a href="#">Enseignant <span class="badge">42</span></a></li>
-                  <li class="active"><a href="#">Eleve <span class="badge">126</span></a></li>
+                  <li class="active"><a href="#">Aministrateurs <span class="badge">
+                    <?php
+                      echo $admin->getAdminCount()['COUNT']; 
+                    ?>
+                  </span></a></li>
+                  <li class="active"><a href="#">Enseignant <span class="badge">
+                  <?php
+                      echo $teachersCount ; 
+                    ?>
+                  </span></a></li>
+                  <li class="active"><a href="#">Eleve <span class="badge">
+                  <?php
+                      echo $studentsCount; 
+                    ?>
+                  </span></a></li>
                 </ul>          
               </div>
             </div>
@@ -84,31 +107,24 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <th>Email</th>
                           <th>Nom</th>
                           <th>Prénom</th>
-                          <th>Email</th>
+                          <th>Est Superieur</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>John</td>
-                          <td>Smith</td>
-                          <td>@js</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Bill</td>
-                          <td>Jones</td>
-                          <td>@bj</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Marry</td>
-                          <td>James</td>
-                          <td>@mj</td>
-                        </tr>
+                      <?php
+                            foreach ($admins as $admin) {
+                              $type = $client['isSup'] =='1' ? 'Vrai' : 'Faux'; 
+                              echo "<tr>"; 
+                                echo "<td> ".$admin['admin_email']." </td>";
+                                echo "<td>".$admin['name']."</td>";
+                                echo "<td>".$admin['lastname']."</td>";
+                                echo "<td>".$type."</td>";
+                                echo "</tr>"; 
+                            }
+                          ?>
                       </tbody>
                     </table>
                   </div>
@@ -122,31 +138,25 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <th>Email</th>
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Type</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>John</td>
-                          <td>Smith</td>
-                          <td>@js</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Bill</td>
-                          <td>Jones</td>
-                          <td>@bj</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Marry</td>
-                          <td>James</td>
-                          <td>@mj</td>
-                        </tr>
+                   
+                          <?php
+                            foreach ($clients as $client) {
+                              $type = $client['isStudent'] =='1' ? 'Eleve' : 'Enseignant'; 
+                              echo "<tr>"; 
+                                echo "<td> ".$client['utilisateur_email']." </td>";
+                                echo "<td>".$client['name']."</td>";
+                                echo "<td>".$client['lastname']."</td>";
+                                echo "<td>".$type."</td>";
+                                echo "</tr>"; 
+                            }
+                          ?>
                       </tbody>
                     </table>
                   </div>

@@ -1,3 +1,9 @@
+<?php 
+   require_once "../../controllers/AdminController.php"; 
+   require_once "../../controllers/UserController.php"; 
+  $admin = new AdminController() ;  
+?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -63,39 +69,39 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <div class="row margin-bottom-30">
             <div class="col-md-12">
               <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre d'administrateurs <span class="badge">1</span></a></li>
+                <li class="active"><a href="#">Nombre d'administrateurs <span class="badge">
+                  <?php
+                     echo $admin->getAdminCount()['COUNT']; 
+                  ?>
+                </span></a></li>
               </ul>          
             </div>
           </div> 
           <div class="row">
             <div class="col-md-12">
-              <div class="btn-group pull-right" id="templatemo_sort_btn">
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">First Name</a></li>
-                  <li><a href="#">Last Name</a></li>
-                  <li><a href="#">Username</a></li>
-                </ul>
-              </div>
+              
               <div class="table-responsive">
                 <h4 class="margin-bottom-15">Tableau d'administrateurs</h4>
                 <table class="table table-striped table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>Email</th>
                       <th>Nom</th>
                       <th>Prénom</th>
-                      <th>Email</th>
                       <th>Supprimer</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>John</td>
-                      <td>Smith</td>
-                      <td>a@company.com</td>                   
-                      <td><span class="btn btn-primary"><a href="">Supprimer</a></span></td>
-                    </tr>           
+                    <?php
+                        $admins = $admin->getAdmins(); 
+                        foreach ($admins as $ad) {
+                          echo "<tr>" ; 
+                          echo "<td>".$ad['admin_email']."</td>";
+                          echo "<td>".$ad['name']."</td>";
+                          echo "<td>".$ad['lastname']."</td>";
+                          echo "<td> <button class='btn btn-danger' type='button'>Delete</button></td>";
+                        }
+                    ?>
                   </tbody>
                 </table>
                 <br>
@@ -104,32 +110,63 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                 </ul>    
               </div>
               <br>
+              <form method="POST" >
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
                   <label for="firstName" class="control-label">nom</label>
-                  <input type="text" class="form-control" id="firstName" value="">                  
+                  <input type="text" class="form-control" id="firstName" name="name">                  
                 </div>
                 <div class="col-md-6 margin-bottom-15">
                   <label for="lastName" class="control-label">Prénom</label>
-                  <input type="text" class="form-control" id="lastName" value="">                 
+                  <input type="text" class="form-control" id="lastName" value="" name="lastname">                 
                 </div>
                 <div class="row">
                   <div class="col-md-6 margin-bottom-15">
                     <label for="email" class="control-label">Email</label>
-                    <input type="text" class="form-control" id="lastName" value="">                 
+                    <input type="text" class="form-control" id="lastName" value="" name="email">                 
                   </div>
                   <div class="col-md-6 margin-bottom-15">
                     <label for="password" class="control-label">Mot de passe</label>
-                    <input type="text" class="form-control" id="lastName" value="">                 
+                    <input type="text" class="form-control" id="lastName" value="" name="password">                 
                   </div>
-                  <span class="btn btn-primary"><a href="">Ajouter en tant qu'un administrateur</a></span>
+                  <div class="col-md-6 margin-bottom-15">
+                    <label for="password" class="control-label">Adress</label>
+                    <input type="text" class="form-control" id="lastName" value="" name="adress">                 
+                  </div>
+                  <div class="col-md-6 margin-bottom-15">
+                    <label for="password" class="control-label">Tel</label>
+                    <input type="number" class="form-control" id="lastName" value="" name="tel">                 
+                  </div>
+                  <div class="col-md-6 margin-bottom-15">
+                    <label for="password" class="control-label">Superieur</label>
+                    <select class="form-select" name="isSup">  
+                      <option value="1">Vrai</option>
+                      <option value="0">Faux</option>
+                    </select>               
+                  </div>
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary" name="save">Ajouter en tant qu'un administrateur</button>
+            </form>
             </div>
           </div>
         </div>
       </div>
+      <?php 
+    
+    if (isset($_POST['save'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $name = $_POST['name'];
+        $lastname = $_POST['lastname'];
+        $tel = $_POST['tel'];
+        $adress = $_POST['adress'];
+        $isSup = $_POST['isSup'];
+        $res = $admin->create($name,$lastname,$email,$password,$tel,$adress,$isSup);
+        echo $res ? "<h1>Added Successfully</h1>" : "<h1>Cannot add admin</h1>";
 
+    }
+?>
       <!-- Modal -->
       <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
