@@ -6,7 +6,7 @@ $password = "";
 try {
     $BDD = new PDO("mysql:host=$servername;dbname=emos", $serveruser, $password);
 } catch (PDOException $e) {
-    header('location : src/admin/pages/loginAdmin.php')
+    header('location : src/admin/pages/loginAdmin.php');
 }
 session_start();
 if (!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {

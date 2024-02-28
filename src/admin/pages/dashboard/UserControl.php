@@ -1,3 +1,9 @@
+<?php 
+   require_once "../../controllers/UserController.php"; 
+   require_once "../../controllers/ClientController.php"; 
+  $client = new ClientController() ;  
+  $clients = $client->getClients();
+?>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -63,40 +69,48 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <div class="row margin-bottom-30">
             <div class="col-md-12">
               <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre d'Utilisateurs <span class="badge">1</span></a></li>
+                <li class="active"><a href="#">Nombre d'enseignant <span class="badge">
+                <?php
+                     echo $client->getTeacherCount($clients); 
+                ?>
+                </span></a></li>
+                <li class="active"><a href="#">Nombre d'éleve <span class="badge">
+                <?php
+                     echo $client->getStudentCount($clients); 
+                ?>  
+                </span></a></li>
               </ul>          
             </div>
           </div> 
           <div class="row">
             <div class="col-md-12">
-              <div class="btn-group pull-right" id="templatemo_sort_btn">
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">First Name</a></li>
-                  <li><a href="#">Last Name</a></li>
-                  <li><a href="#">Username</a></li>
-                </ul>
-              </div>
               <div class="table-responsive">
                 <h4 class="margin-bottom-15">Tableau d'utilisateurs</h4>
                 <table class="table table-striped table-hover table-bordered">
-                  <thead>
+                <thead>
                     <tr>
-                      <th>#</th>
+                      <th>Email</th>
                       <th>Nom</th>
                       <th>Prénom</th>
-                      <th>Email</th>
+                      <th>Type</th>
                       <th>Supprimer</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>John</td>
-                      <td>Smith</td>
-                      <td>a@company.com</td>                   
-                      <td><span class="btn btn-primary"><a href="">Modifier</a></span>
-                          <span class="btn btn-primary"><a href="">Supprimer</a></span></td>
-                    </tr>           
+                    <?php
+                        $clients = $client->getClients(); 
+                        foreach ($clients as $cl) {
+                          echo "<tr>" ; 
+                          echo "<td>".$cl['utilisateur_email']."</td>";
+                          echo "<td>".$cl['name']."</td>";
+                          echo "<td>".$cl['lastname']."</td>";
+                          echo "<td>".$cl['isStudent']."</td>";
+                          echo "<td>
+                          <form method='post' action='../../actions/deleteUser.php?email=".$cl['utilisateur_email']."'>       
+                          <button class='btn btn-danger' name='user_admin' type='submit'>Delete</button>
+                          </form></td>";
+                        }
+                    ?>
                   </tbody>
                 </table>
                 <br>

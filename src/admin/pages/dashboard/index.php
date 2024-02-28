@@ -116,7 +116,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                       <tbody>
                       <?php
                             foreach ($admins as $admin) {
-                              $type = $client['isSup'] =='1' ? 'Vrai' : 'Faux'; 
+                              $type = $admin['isSup'] =='1' ? 'Vrai' : 'Faux'; 
                               echo "<tr>"; 
                                 echo "<td> ".$admin['admin_email']." </td>";
                                 echo "<td>".$admin['name']."</td>";

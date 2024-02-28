@@ -99,7 +99,10 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                           echo "<td>".$ad['admin_email']."</td>";
                           echo "<td>".$ad['name']."</td>";
                           echo "<td>".$ad['lastname']."</td>";
-                          echo "<td> <button class='btn btn-danger' type='button'>Delete</button></td>";
+                          echo "<td>
+                          <form method='post' action='../../actions/deleteAdmin.php?email=".$ad['admin_email']."'>       
+                          <button class='btn btn-danger' name='delete_admin' type='submit'>Delete</button>
+                          </form></td>";
                         }
                     ?>
                   </tbody>
@@ -162,8 +165,13 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
         $tel = $_POST['tel'];
         $adress = $_POST['adress'];
         $isSup = $_POST['isSup'];
+       try{
         $res = $admin->create($name,$lastname,$email,$password,$tel,$adress,$isSup);
         echo $res ? "<h1>Added Successfully</h1>" : "<h1>Cannot add admin</h1>";
+       }
+       catch(Exception $e) {
+        echo $e; 
+       }
 
     }
 ?>

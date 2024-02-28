@@ -2,7 +2,7 @@
 $servername = "localhost";
 $serveruser = "root";
 $password = "";
-$dsn = "mysql:host=$servername;dbname=emosl";
+$dsn = "mysql:host=$servername;dbname=emos";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     http_response_code(200);
 }
@@ -30,6 +30,19 @@ try {
            catch(Exception $e) {
             echo $e; 
            }
+        }
+
+        public function deleteUser($email) {
+            try {
+                global $BDD;
+                $query = "DELETE FROM personne WHERE email=:email";
+                $stmnt = $BDD->prepare($query);
+                $stmnt->bindParam(':email', $email);
+                $stmnt->execute();
+                return true;
+            } catch (Exception $e) {
+                return false;
+            }
         }
     }
 

@@ -1,9 +1,9 @@
 <?php
-
+require_once "UserController.php";
 $servername = "localhost";
 $serveruser = "root";
 $password = "";
-$dsn = "mysql:host=$servername;dbname=emosl";
+$dsn = "mysql:host=$servername;dbname=emos";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     http_response_code(200);
 }
@@ -14,6 +14,10 @@ try {
     echo "erreur" . $e->getMessage();
 }
     class ClientController {
+        private $userController;
+            public function __construct() {
+                $this->userController = new UserController();
+            }
         public function getStudentCount($clients) {
             $count = 0 ; 
             foreach ($clients as $client) {
@@ -54,6 +58,20 @@ try {
                 $client['isStudent']=='1' ? array_push($students,$client) : array_push($teachers,$client); 
             }
             return [$students,$teachers]; 
+        }
+        public function deleteClient($email) {
+            try {
+                global $BDD;
+                $query = "DELETE FROM utilisateur where email=:email";
+                $stmnt = $BDD->prepare($query);
+                $stmnt->bindParam(':email',$email); 
+                $stmnt->execute(); 
+                $this->userController->deleteUser($email);
+                return true;
+            }
+            catch (Exception $e) {
+                return false;
+            }
         }
     }
 

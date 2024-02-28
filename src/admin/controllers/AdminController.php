@@ -1,8 +1,9 @@
 <?php
+require_once "UserController.php";
 $servername = "localhost";
 $serveruser = "root";
 $password = "";
-$dsn = "mysql:host=$servername;dbname=emosl";
+$dsn = "mysql:host=$servername;dbname=emos";
 try {
     $BDD = new PDO($dsn, $serveruser, $password);
 } catch (PDOException $e) {
@@ -36,8 +37,8 @@ try {
             $stmnt = $BDD->prepare($qurey);
             $stmnt->execute();
             $rowCount = $stmnt->rowCount();
-            if ($rowCount == 0)
-                return [];
+            // if ($rowCount == 0)
+            //     return [];
             $res = $stmnt->fetchAll(PDO::FETCH_ASSOC);
             return $res;
             }
@@ -68,6 +69,21 @@ try {
             }
             catch(Exception $e) {
                 echo $e ; 
+            }
+        }
+
+        public function deleteAdmin($email) {
+            try{
+                global $BDD;
+            $query = "DELETE FROM admin where email=:email";
+            $stmnt = $BDD->prepare($query);
+            $stmnt->bindParam(':email',$email); 
+            $stmnt->execute(); 
+            $this->userController->deleteUser($email);
+            return true;
+            }
+            catch(Exception $e) {
+            return false; 
             }
         }
         
