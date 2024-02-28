@@ -39,15 +39,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub open">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -57,28 +49,67 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <ol class="breadcrumb">
             
           </ol>
-          <h1>H1 Tag</h1> 
-          <p>P Tag</p>
-          <button class='btn btn-success' name='modifier_cour' type='submit'><a href="GoModifyCourAvancees.php">Modifier</a></button>
-          <button class='btn btn-danger' name='retour' type='submit'><a href="CoursControlAvancees.php">Retour</a></button>
+          <h1>Manager les Cours Avancés</h1>
+          <p>Voiçi le tableau des cours</p>
+
+          <div class="row margin-bottom-30">
+            <div class="col-md-12">
+              <ul class="nav nav-pills">
+                <li class="active"><a href="#">Nombre de cours <span class="badge">4</span></a></li>
+              </ul>          
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <h4 class="margin-bottom-15">Tableau de Cours</h4>
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Titre</th>
+                      <th>Contenu</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>John</td>
+                      <td>Smith</td>     
+                      <td><span class="btn btn-primary"><a href="">Voir</a></span></td>              
+                      <td><span class="btn btn-primary"><a href="">Modifier</a></span>
+                          <span class="btn btn-primary"><a href="">Supprimer</a></span></td>
+                    </tr>           
+                  </tbody>
+                </table>
+                <br>
+              </div>
+              <br>
+              <div class="table-responsive">
+                <div class="col-md-6 margin-bottom-15">
+                  <label for="firstName" class="control-label">Nom</label>
+                  <input type="text" class="form-control" id="firstName" value="">                  
+                </div>
+                <div class="row">
+                </div>
+              </div>
+              <div class="table-responsive">
+                <div class="col-md-6 margin-bottom-15">
+                  <label for="firstName" class="control-label">Lien</label>
+                  <input type="text" class="form-control" id="firstName" value="">                  
+                </div>
+                <div class="row">
+                </div>
+              </div>
+              <div class="table-responsive">
+                <div class="col-md-6 margin-bottom-15">
+                    <span class="btn btn-primary"><a href="">Ajouter cours</a></span>                
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <style>
-        .templatemo-content {
-        position: relative;
-        }
-
-        .btn-success {
-        position: absolute;
-        top: 70px; 
-        right: 70px;
-        }
-        .btn-danger {
-        position: absolute;
-        top: 120px; 
-        right: 70px;
-        }
-      </style>
 
       <!-- Modal -->
       <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
