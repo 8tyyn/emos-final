@@ -10,7 +10,7 @@ try {
 }
 session_start();
 if (!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
-    header("location: src/client/pages/login.php");
+    header("location: login.php");
     exit();
 }
 $email = $_SESSION["email"];
@@ -23,7 +23,7 @@ $stmnt->execute();
 $rowCount = $stmnt->rowCount();
 $row = $stmnt->fetch(PDO::FETCH_ASSOC); 
 if ($rowCount == 0) {
-    header("location: src/client/pages/login.html");
+    header("location: ../login.html");
 } else {
 ?>
 <?php
