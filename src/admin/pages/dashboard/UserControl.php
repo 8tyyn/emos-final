@@ -45,15 +45,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -100,11 +92,12 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                     <?php
                         $clients = $client->getClients(); 
                         foreach ($clients as $cl) {
+                          $type = $cl['isStudent'] =='1' ? 'Eleve' : 'Enseignant';
                           echo "<tr>" ; 
                           echo "<td>".$cl['utilisateur_email']."</td>";
                           echo "<td>".$cl['name']."</td>";
                           echo "<td>".$cl['lastname']."</td>";
-                          echo "<td>".$cl['isStudent']."</td>";
+                          echo "<td>".$type."</td>";
                           echo "<td>
                           <form method='post' action='../../actions/deleteUser.php?email=".$cl['utilisateur_email']."'>       
                           <button class='btn btn-danger' name='user_admin' type='submit'>Delete</button>

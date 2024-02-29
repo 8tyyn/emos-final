@@ -39,15 +39,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub open">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -58,21 +50,24 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             
           </ol>
           <div class="table-responsive">
-          <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">titre</label>
-                  <input type="text" class="form-control" name="title" value="H1 Tag">                  
-          </div> 
-          </div>
-          <button class='btn btn-warning' name='save_cour' type='submit'>Enregistrer</button>
-          <button class='btn btn-danger' name='annuler' type='submit'><a href="VoirCourSimple.php">Annuler</a></button>
-          <div class="row">
-          </div>
-          <div class="col-md-6 margin-bottom-15">
-           <div class="row">
-           <label for="firstName" class="control-label">Contenu</label>
-           <textarea name="content" class="form-control" id="" cols="30" rows="10">P Tag</textarea>
-           </div>
-          </div>
+              <h4 class="margin-bottom-15">Partie d'ajout d'un cours</h4>
+                <div class="col-md-6 margin-bottom-15">
+                  <label for="firstName" class="control-label">Titre</label>
+                  <input type="text" class="form-control" id="firstName" value="H1">                  
+                </div>
+                <div class="row">
+                </div>
+              </div>
+              <div class="table-responsive">
+                <div class="col-md-6 margin-bottom-15">
+                  <label for="firstName" class="control-label">Contenu</label>
+                  <textarea name="content" class="form-control" id="" cols="30" rows="10">P TAG</textarea>                  
+                </div>
+                <div class="row">
+                </div>
+              </div>
+              <button class='btn btn-success' name='modifier_cour' type='submit'><a href="VoirCours.php">Enregistrer</a></button>
+              <button class='btn btn-danger' name='retour' type='submit'><a href="VoirCours.php">Retour</a></button>
         </div>
       </div>
       <style>
@@ -80,7 +75,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
         position: relative;
         }
 
-        .btn-warning {
+        .btn-success {
         position: absolute;
         top: 70px; 
         right: 70px;

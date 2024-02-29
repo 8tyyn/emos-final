@@ -76,9 +76,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                     <tr>
                       <td>John</td>
                       <td>Smith</td>     
-                      <td><span class="btn btn-primary"><a href="">Voir</a></span></td>              
-                      <td><span class="btn btn-primary"><a href="">Modifier</a></span>
-                          <span class="btn btn-primary"><a href="">Supprimer</a></span></td>
+                      <td><span class="btn btn-primary"><a href="VoirCours.php">Voir</a></span></td>              
+                      <td><span class="btn btn-success"><a href="GoModifyCour.php">Modifier</a></span>
+                          <span class="btn btn-danger"><a href="">Supprimer</a></span></td>
                     </tr>           
                   </tbody>
                 </table>
@@ -86,8 +86,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               </div>
               <br>
               <div class="table-responsive">
+              <h4 class="margin-bottom-15">Partie d'ajout d'un cours</h4>
                 <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Nom</label>
+                  <label for="firstName" class="control-label">Titre</label>
                   <input type="text" class="form-control" id="firstName" value="">                  
                 </div>
                 <div class="row">
@@ -95,15 +96,15 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               </div>
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Lien</label>
-                  <input type="text" class="form-control" id="firstName" value="">                  
+                  <label for="firstName" class="control-label">Contenu</label>
+                  <textarea name="content" class="form-control" id="" cols="30" rows="10"></textarea>                  
                 </div>
                 <div class="row">
                 </div>
               </div>
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
-                    <span class="btn btn-primary"><a href="">Ajouter cours</a></span>                
+                    <span class="btn btn-success"><a href="">Ajouter cours</a></span>                
                   </div>
               </div>
             </div>

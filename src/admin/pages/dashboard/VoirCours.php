@@ -52,15 +52,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub open">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -81,7 +73,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             ?>
           </p>
           <button class='btn btn-success' name='modifier_cour' type='submit'><a href="GoModifyCourAvancees.php">Modifier</a></button>
-          <button class='btn btn-danger' name='retour' type='submit'><a href="CoursControlAvancees.php">Retour</a></button>
+          <button class='btn btn-danger' name='retour' type='submit'><a href="CoursControl.php">Retour</a></button>
         </div>
       </div>
       <style>
