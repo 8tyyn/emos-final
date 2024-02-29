@@ -19,17 +19,18 @@ try {
             $stmnt = $BDD->prepare($query); 
             $stmnt->bindParam(":id",$id); 
             $stmnt->execute(); 
-            $rowCount = $stmnt->rowCount();
             $res = $stmnt->fetchAll(PDO::FETCH_ASSOC);
             return $res ; 
         }
         public function registerModification($cours_id ,$admin_id ) {
             global $BDD; 
-            $query = "INSERT INTO modification VALUES(:cours_id,:admin_id,:modified_at)"; 
-            $stmnt =$BDD->prepare($query); 
+            $query = "INSERT INTO modification(`cours_id`,`admin_id`,`modified_at`) VALUES(:cours_id,:admin_id,:modified_at)";
+            $stmnt =$BDD->prepare($query);
+            $dateTime = new DateTime();
+            $formated = $dateTime->format('Y-m-d');
             $stmnt->bindParam(":cours_id",$cours_id);
             $stmnt->bindParam(":admin_id",$admin_id);
-            $stmnt->bindParam(":modified_at",date("Y-m-d"));
+            $stmnt->bindParam(":modified_at",$formated);
             $stmnt->execute();
             $rowCount = $stmnt->rowCount();
             return $rowCount != 0; 
@@ -37,7 +38,7 @@ try {
         public function getCoursModification($id) {
             global $BDD ; 
             $query = "SELECT * FROM modification WHERE cours_id=:id";
-            $stmnt = $BDD->prepare(); 
+            $stmnt = $BDD->prepare($query);
             $stmnt->bindParam(":id",$id); 
             $stmnt->execute();
             $rowCount = $stmnt->rowCount();

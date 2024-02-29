@@ -36,15 +36,15 @@ try {
             return $stmnt->rowCount()!=0 ; 
         }
         public function modifyCours($id , $title,$content,$admin_id) {
-            global $BDD; 
-            $query = "UPDATE cours SET title=:title,content=:content WHERE id=:id"; 
+            global $BDD;
+            $this->modificationController->registerModification($id,$admin_id);
+            $query = "UPDATE cours SET `title` = :title ,`content` = :content WHERE `id` = :id";
             $stmnt = $BDD->prepare($query);
-            $stmnt->bindParam(":id",$id); 
-            $stmnt->bindParam(":title",$title); 
-            $stmnt->bindParam(":content",$content); 
+            $stmnt->bindParam(":id",$id);
+            $stmnt->bindParam(":title",$title);
+            $stmnt->bindParam(":content",$content);
             $stmnt->execute();
-            $this->modificationController->registerModification($id,$admin_id); 
-            return $stmnt->rowCount()!=0 ; 
+            return $stmnt->rowCount()!=0 ;
         }
         public function getSingleCours($id) {
             global $BDD; 
@@ -53,21 +53,29 @@ try {
             $stmnt->bindParam(":id",$id); 
             $stmnt->execute();
             $rowCount = $stmnt->rowCount();
-            $res = $stmnt->fetchAll(PDO::FETCH_ASSOC);
+            $res = $stmnt->fetch(PDO::FETCH_ASSOC);
             return $res ; 
         }
-        public function create($title , $content ,$admin_id) {
+        public function create($title , $content ,$written_by) {
             global $BDD ;
-            $query = "INSERT INTO cours VALUES(:title,:content,:written_by,:created_at,:updated_at)"; 
-            $stmnt = $BDD->prepare($query); 
+            $date = new DateTime();
+            $formated = $date->format('Y-m-d');
+            echo $title ;
+            echo $content ;
+            echo $written_by ;
+            $query = "INSERT INTO cours(`title`, `content`, `written_by`, `updated_at`, `created_at`) VALUES(:title,:content,:written_by,:updated_at,:created_at)";
+            $stmnt = $BDD->prepare($query);
             $stmnt->bindParam(":title",$title);
             $stmnt->bindParam(":content",$content);
             $stmnt->bindParam(":written_by",$written_by);
-            $stmnt->bindParam(":created_at",date("Y-m-d"));
-            $stmnt->bindParam(":updated_at",date("Y-m-d"));
+            $stmnt->bindParam(":created_at",$formated);
+            $stmnt->bindParam(":updated_at",$formated);
             $stmnt->execute();
-            $rowCount = $stmnt->rowCount(); 
-            return $rowCount!=0 ; 
+            $rowCount = $stmnt->rowCount();
+            return $rowCount!=0 ;
+        }
+        public function getCoursesCount($courses) {
+            return count($courses);
         }
         
 

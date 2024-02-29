@@ -1,3 +1,10 @@
+<?php 
+  require_once "../../controllers/CoursController.php";
+  $coursController = new CoursController() ;
+  $cours = $coursController->getAllCours();
+  $count= $coursController->getCoursesCount($cours);
+
+?>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -55,7 +62,11 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <div class="row margin-bottom-30">
             <div class="col-md-12">
               <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre de cours <span class="badge">4</span></a></li>
+                <li class="active"><a href="#">Nombre de cours <span class="badge">
+                            <?php
+                                echo $count ;
+                            ?>
+                        </span></a></li>
               </ul>          
             </div>
           </div> 
@@ -73,23 +84,29 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>Smith</td>     
-                      <td><span class="btn btn-primary"><a href="VoirCours.php">Voir</a></span></td>              
-                      <td><span class="btn btn-success"><a href="GoModifyCour.php">Modifier</a></span>
-                          <span class="btn btn-danger"><a href="">Supprimer</a></span></td>
-                    </tr>           
+                    <?php
+                        foreach ($cours as $cs) {
+                            echo "<tr>"; 
+                            echo "<td>".$cs['title']."</td>";
+                            echo "<td>".$cs['content']."</td>";
+                      
+                            echo '<td><span class="btn btn-primary"><a href="VoirCours.php?id='.$cs['id'].'">Voir</a></span></td>';
+                            echo '<td><span class="btn btn-success"><a href="GoModifyCour.php?id='.$cs['id'].'">Modifier</a></span>';
+                            echo '<span class="btn btn-danger"><a href="../../actions/cours/deleteCours.php?id='.$cs['id'].'">Supprimer</a></span></td>';
+                            echo "</tr>"; 
+                          }
+                    ?>
                   </tbody>
                 </table>
                 <br>
               </div>
               <br>
+              <form method="POST">
               <div class="table-responsive">
               <h4 class="margin-bottom-15">Partie d'ajout d'un cours</h4>
                 <div class="col-md-6 margin-bottom-15">
                   <label for="firstName" class="control-label">Titre</label>
-                  <input type="text" class="form-control" id="firstName" value="">                  
+                  <input type="text" class="form-control" id="firstName" name="title">                  
                 </div>
                 <div class="row">
                 </div>
@@ -104,10 +121,12 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               </div>
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
-                    <span class="btn btn-success"><a href="">Ajouter cours</a></span>                
+                    <button class="btn btn-success" type="submit" name="save">Ajouter cours</button>                
                   </div>
               </div>
             </div>
+              </form>
+         
           </div>
         </div>
       </div>
@@ -134,3 +153,20 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
     <script src="../../js/templatemo_script.js"></script>
   </body>
 </html>
+<?php 
+        try{
+          if(isset($_POST['save'])) {
+            $title = $_POST['title']; 
+            $content = $_POST['content'];
+            if($coursController->create($title,$content,"3ASSBA@gmail.com")) {
+              header("location: https://www.google.com");
+            }
+            else {
+              echo "L3ASSBA";
+            }
+          }
+        }
+        catch(Exception $e) {
+            echo $e; 
+        }
+?>

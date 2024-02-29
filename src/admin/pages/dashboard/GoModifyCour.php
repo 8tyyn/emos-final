@@ -1,3 +1,14 @@
+<?php   
+
+  require_once "../../controllers/CoursController.php"; 
+  $coursController = new CoursController(); 
+  $id = $_GET['id']; 
+  echo $id ; 
+  $cours = $coursController->getSingleCours($id);
+  $title = $cours['title']; 
+  $content = $cours['content']; 
+?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -49,26 +60,33 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <ol class="breadcrumb">
             
           </ol>
-          <div class="table-responsive">
-              <h4 class="margin-bottom-15">Partie d'ajout d'un cours</h4>
-                <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Titre</label>
-                  <input type="text" class="form-control" id="firstName" value="H1">                  
-                </div>
-                <div class="row">
-                </div>
+          <form method="post">
+              <div class="table-responsive">
+                  <h4 class="margin-bottom-15">Modifier un cours</h4>
+                  <div class="col-md-6 margin-bottom-15">
+                      <label for="firstName" class="control-label">Titre</label>
+                      <?php
+                      echo "<input type='text class='form-control' name='title' value=".$title." >";
+                      ?>
+                  </div>
+                  <div class="row">
+                  </div>
               </div>
               <div class="table-responsive">
-                <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Contenu</label>
-                  <textarea name="content" class="form-control" id="" cols="30" rows="10">P TAG</textarea>                  
-                </div>
-                <div class="row">
-                </div>
+                  <div class="col-md-6 margin-bottom-15">
+                      <label for="firstName" class="control-label">Contenu</label>
+                      <?php
+                      echo '<textarea name="content" class="form-control" name="content" id="" cols="30" rows="10" value="'.$content.'">'.$content.'</textarea>';
+                      ?>
+
+                  </div>
+                  <div class="row">
+                  </div>
               </div>
               <button class='btn btn-success' name='modifier_cour' type='submit'><a href="VoirCours.php">Enregistrer</a></button>
               <button class='btn btn-danger' name='retour' type='submit'><a href="VoirCours.php">Retour</a></button>
         </div>
+          </form>
       </div>
       <style>
         .templatemo-content {
@@ -109,3 +127,20 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
     <script src="../../js/templatemo_script.js"></script>
   </body>
 </html>
+<?php
+try{
+    if(isset($_POST['modifier_cour'])) {
+        $newTitle = $_POST['title'];
+        $newContent = $_POST['content'];
+        if($coursController->modifyCours($id,$newTitle,$newContent,"3ASSBA@gmail.com")) {
+            echo "<p class='alert alert-success'> Modified Successfully</p>";
+        }
+        else {
+            echo "L3ASSBA";
+        }
+    }
+}
+catch(Exception $e) {
+    echo $e;
+}
+?>

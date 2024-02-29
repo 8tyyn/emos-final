@@ -1,15 +1,13 @@
 <?php 
   require_once "../../controllers/CoursController.php"; 
   $cours = new CoursController(); 
-  try {
+
     $id = $_GET['id']; 
-    $current = $cours->getSingleCours($id); 
-  }
-  catch(Exception $e) {
-    header ("location: CoursControlSimples.php"); 
-  }
-
-
+    if(!isset($id)) {
+      header("location: CoursControl.php");
+      exit(); 
+    } 
+    $current = $cours->getSingleCours($id);
 ?>
 <!DOCTYPE html>
 <head>
@@ -63,16 +61,18 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             
           </ol>
           <h1>
-            <?
+            <?php
               echo $current['title']; 
             ?>
           </h1> 
           <p>
-            <?
+            <?php
             echo $current['content'];  
             ?>
           </p>
-          <button class='btn btn-success' name='modifier_cour' type='submit'><a href="GoModifyCourAvancees.php">Modifier</a></button>
+          <?php
+          echo '<a href="GoModifyCour.php?id='.$current['id'].'" class="btn btn-success">Modifier</a>'
+          ?>
           <button class='btn btn-danger' name='retour' type='submit'><a href="CoursControl.php">Retour</a></button>
         </div>
       </div>
