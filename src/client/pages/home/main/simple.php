@@ -15,7 +15,6 @@
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-<<<<<<< HEAD
     <link href="../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -24,16 +23,6 @@
     <link rel="stylesheet" href="../../../../../assets/css/templatemo-cyborg-gaming.css">
     <link rel="stylesheet" href="../../../../../assets/css/owl.css">
     <link rel="stylesheet" href="../../../../../assets/css/animate.css">
-=======
-    <link href="../../../../assets/images/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../../../../assets/images/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../../../../assets/images/assets/css/templatemo-cyborg-gaming.css">
-    <link rel="stylesheet" href="../../../../assets/images/assets/css/owl.css">
-    <link rel="stylesheet" href="../../../../assets/images/assets/css/animate.css">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
@@ -91,11 +80,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="owl-features owl-carousel">
                   <div class="item">
                     <div class="thumb">
-<<<<<<< HEAD
                       <img src="../../../../../assets/images/programme2.gif" alt="">
-=======
-                      <img src="../../../../assets/images/assets/images/programme2.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                       <div class="hover-effect">
                         <h6><a href="../courses/simple/avancement.php">voir le code</a></h6>
                       </div>
@@ -108,11 +93,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   </div>
                   <div class="item">
                     <div class="thumb">
-<<<<<<< HEAD
                       <img src="../../../../../assets/images/programme4.gif" alt="">
-=======
-                      <img src="../../../../assets/images/assets/images/programme4.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                       <div class="hover-effect">
                         <h6><a href="../courses/simple/tourner.php">voir le code</a></h6>
                       </div>
@@ -125,11 +106,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   </div>
                   <div class="item">
                     <div class="thumb">
-<<<<<<< HEAD
                       <img src="../../../../../assets/images/programme5.gif" alt="">
-=======
-                      <img src="../../../../assets/images/assets/images/programme5.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                       <div class="hover-effect">
                         <h6><a href="../courses/simple/cercle.php">voir le code</a></h6>
                       </div>
@@ -142,11 +119,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   </div>
                   <div class="item">
                     <div class="thumb">
-<<<<<<< HEAD
                       <img src="../../../../../assets/images/programme6.gif" alt="">
-=======
-                      <img src="../../../../assets/images/assets/images/programme6.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                       <div class="hover-effect">
                         <h6><a href="../courses/simple/carre.php">voir le code</a></h6>
                       </div>
@@ -168,11 +141,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </div>
                 <ul>
                   <li>
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/walking.gif" alt="" class="templatemo-item">
-=======
-                    <img src="../../../../assets/images/assets/images/walking.gif" alt="" class="templatemo-item">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <h4>Avancement</h4>
                     <h6>sb3</h6>
                     <span><i class="fa fa-star" style="color: yellow;"></i> 2</span>
@@ -182,11 +151,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                   </li>
                   <li>
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/turning.gif" alt="" class="templatemo-item">
-=======
-                    <img src="../../../../assets/images/assets/images/turning.gif" alt="" class="templatemo-item">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <h4>Tourner Droite</h4>
                     <h6>sb3</h6>
                     <span><i class="fa fa-star" style="color: yellow;"></i> 2.7</span>
@@ -196,11 +161,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                   </li>
                   <li>
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/circle.gif" alt="" class="templatemo-item">
-=======
-                    <img src="../../../../assets/images/assets/images/circle.gif" alt="" class="templatemo-item">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <h4>Cercle</h4>
                     <h6>sb3</h6>
                     <span><i class="fa fa-star" style="color: yellow;"></i> 1.2</span>
@@ -230,11 +191,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/walking.gif" alt="">
-=======
-                    <img src="../../../../assets/images/assets/images/walking.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <div class="hover-effect">
                       <div class="content">
                         <div class="live">
@@ -256,11 +213,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/turning.gif" alt="">
-=======
-                    <img src="../../../../assets/images/assets/images/turning.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <div class="hover-effect">
                       <div class="content">
                         <div class="live">
@@ -282,11 +235,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/circle.gif" alt="">
-=======
-                    <img src="../../../../assets/images/assets/images/circle.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <div class="hover-effect">
                       <div class="content">
                         <div class="live">
@@ -308,11 +257,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-<<<<<<< HEAD
                     <img src="../../../../../assets/images/carré.gif" alt="">
-=======
-                    <img src="../../../../assets/images/assets/images/carré.gif" alt="">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     <div class="hover-effect">
                       <div class="content">
                         <div class="live">
@@ -360,7 +305,6 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-<<<<<<< HEAD
   <script src="../../../../../vendor/jquery/jquery.min.js"></script>
   <script src="../../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -369,16 +313,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="../../../../../assets/js/tabs.js"></script>
   <script src="../../../../../assets/js/popup.js"></script>
   <script src="../../../../../assets/js/custom.js"></script>
-=======
-  <script src="../../../../assets/images/vendor/jquery/jquery.min.js"></script>
-  <script src="../../../../assets/images/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="../../../../assets/images/assets/js/isotope.min.js"></script>
-  <script src="../../../../assets/images/assets/js/owl-carousel.js"></script>
-  <script src="../../../../assets/images/assets/js/tabs.js"></script>
-  <script src="../../../../assets/images/assets/js/popup.js"></script>
-  <script src="../../../../assets/images/assets/js/custom.js"></script>
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
 
 
   </body>

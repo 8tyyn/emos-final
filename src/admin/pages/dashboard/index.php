@@ -1,7 +1,9 @@
 <?php
-session_start();
-  require_once "../../controllers/AdminController.php"; 
-  require_once "../../controllers/ClientController.php"; 
+
+require_once "../../auth/requireAdminAuth.php";
+
+  require_once "../../../controllers/AdminController.php";
+  require_once "../../../controllers/ClientController.php";
   $client = new ClientController(); 
   $admin = new AdminController(); 
   $clients= $client->getClients() ; 
@@ -49,15 +51,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -251,10 +245,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
-            <div class="modal-footer">
-              <a href="sign-in.html" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+              <?php
+              include "../../components/Logout.php";
+              ?>
           </div>
         </div>
       </div>

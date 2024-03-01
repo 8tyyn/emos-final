@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $serveruser = "root";
 $password = "";
@@ -6,11 +7,11 @@ $password = "";
 try {
     $BDD = new PDO("mysql:host=$servername;dbname=emos", $serveruser, $password);
 } catch (PDOException $e) {
-    header('location : src/admin/pages/loginAdmin.php');
+    header('location : /emos-final/src/admin/pages/loginAdmin.php');
 }
 session_start();
 if (!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
-    header("location: src/admin/pages/loginAdmin.php");
+    header("location: /emos-final/src/admin/pages/loginAdmin.php");
     exit();
 }
 $email = $_SESSION["email"];
@@ -21,9 +22,9 @@ $stmnt->bindParam(":email", $email);
 $stmnt->bindParam(":password", $password);
 $stmnt->execute();
 $rowCount = $stmnt->rowCount();
-$row = $stmnt->fetch(PDO::FETCH_ASSOC); 
+$row = $stmnt->fetch(PDO::FETCH_ASSOC);
 if ($rowCount == 0) {
-    header("location: src/client/pages/login.html");
+    header("location: /emos-final/src/admin/pages/loginAdmin.php");
 } else {
 ?>
 <?php

@@ -1,11 +1,15 @@
 <?php
 require_once "../../auth/requireAdminAuth.php";
 
-   require_once "../../../controllers/UserController.php";
-   require_once "../../../controllers/ClientController.php";
-  $client = new ClientController() ;  
-  $clients = $client->getClients();
+  require_once "../../../controllers/CoursController.php";
+  $coursController = new CoursController(); 
+  $id = $_GET['id']; 
+  echo $id ; 
+  $cours = $coursController->getSingleCours($id);
+  $title = $cours['title']; 
+  $content = $cours['content']; 
 ?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -38,7 +42,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
           <li><a href="index.php"><i class="fa fa-home"></i>TABLEAU DE BORD</a></li>
-          <li class="sub open">
+          <li class="sub">
             <a href="javascript:;">
               <i class="fa fa-users"></i> Utilisateurs Control <div class="pull-right"><span class="caret"></span></div>
             </a>
@@ -57,65 +61,50 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <ol class="breadcrumb">
             
           </ol>
-          <h1>Manager les Utilisateurs</h1>
-          <p>Voiçi le tableau des utilisateurs</p>
-
-          <div class="row margin-bottom-30">
-            <div class="col-md-12">
-              <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre d'enseignant <span class="badge">
-                <?php
-                     echo $client->getTeacherCount($clients); 
-                ?>
-                </span></a></li>
-                <li class="active"><a href="#">Nombre d'éleve <span class="badge">
-                <?php
-                     echo $client->getStudentCount($clients); 
-                ?>  
-                </span></a></li>
-              </ul>          
-            </div>
-          </div> 
-          <div class="row">
-            <div class="col-md-12">
+          <form method="post">
               <div class="table-responsive">
-                <h4 class="margin-bottom-15">Tableau d'utilisateurs</h4>
-                <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                      <th>Email</th>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Type</th>
-                      <th>Supprimer</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                        $clients = $client->getClients(); 
-                        foreach ($clients as $cl) {
-                          $type = $cl['isStudent'] =='1' ? 'Eleve' : 'Enseignant';
-                          echo "<tr>" ; 
-                          echo "<td>".$cl['utilisateur_email']."</td>";
-                          echo "<td>".$cl['name']."</td>";
-                          echo "<td>".$cl['lastname']."</td>";
-                          echo "<td>".$type."</td>";
-                          echo "<td>
-                          <form method='post' action='../../actions/deleteUser.php?email=".$cl['utilisateur_email']."'>       
-                          <button class='btn btn-danger' name='user_admin' type='submit'>Delete</button>
-                          </form></td>";
-                        }
-                    ?>
-                  </tbody>
-                </table>
-                <br>
+                  <h4 class="margin-bottom-15">Modifier un cours</h4>
+                  <div class="col-md-6 margin-bottom-15">
+                      <label for="firstName" class="control-label">Titre</label>
+                      <?php
+                      echo "<input type='text' class='form-control' name='title' value=".$title." >";
+                      ?>
+                  </div>
+                  <div class="row">
+                  </div>
               </div>
-              <br>
-              
-            </div>
-          </div>
+              <div class="table-responsive">
+                  <div class="col-md-6 margin-bottom-15">
+                      <label for="firstName" class="control-label">Contenu</label>
+                      <?php
+                      echo '<textarea name="content" class="form-control" name="content" id="" cols="30" rows="10" value="'.$content.'">'.$content.'</textarea>';
+                      ?>
+
+                  </div>
+                  <div class="row">
+                  </div>
+              </div>
+              <button class='btn btn-success' name='modifier_cour' type='submit'>Enregistrer</button>
+              <button class='btn btn-danger' name='retour' type='submit'><a href="VoirCours.php">Retour</a></button>
         </div>
+          </form>
       </div>
+      <style>
+        .templatemo-content {
+        position: relative;
+        }
+
+        .btn-success {
+        position: absolute;
+        top: 70px; 
+        right: 70px;
+        }
+        .btn-danger {
+        position: absolute;
+        top: 120px; 
+        right: 70px;
+        }
+      </style>
 
       <!-- Modal -->
       <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -138,3 +127,20 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
     <script src="../../js/templatemo_script.js"></script>
   </body>
 </html>
+<?php
+try{
+    if(isset($_POST['modifier_cour'])) {
+        $newTitle = $_POST['title'];
+        $newContent = $_POST['content'];
+        if($coursController->modifyCours($id,$newTitle,$newContent,"3ASSBA@gmail.com")) {
+            echo "<p class='alert alert-success'> Modified Successfully</p>";
+        }
+        else {
+            echo "L3ASSBA";
+        }
+    }
+}
+catch(Exception $e) {
+    echo $e;
+}
+?>

@@ -1,5 +1,5 @@
 <?php 
-require_once "../controllers/AdminController.php"; 
+require_once "../../controllers/AdminController.php";
 $admin = new AdminController() ;  
         $email = $_GET['email']; 
         if ($admin->deleteAdmin($email)) {

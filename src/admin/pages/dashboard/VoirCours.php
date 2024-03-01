@@ -1,10 +1,15 @@
 <?php
 require_once "../../auth/requireAdminAuth.php";
 
-   require_once "../../../controllers/UserController.php";
-   require_once "../../../controllers/ClientController.php";
-  $client = new ClientController() ;  
-  $clients = $client->getClients();
+  require_once "../../../controllers/CoursController.php";
+  $cours = new CoursController(); 
+
+    $id = $_GET['id']; 
+    if(!isset($id)) {
+      header("location: CoursControl.php");
+      exit(); 
+    } 
+    $current = $cours->getSingleCours($id);
 ?>
 <!DOCTYPE html>
 <head>
@@ -38,7 +43,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
           <li><a href="index.php"><i class="fa fa-home"></i>TABLEAU DE BORD</a></li>
-          <li class="sub open">
+          <li class="sub">
             <a href="javascript:;">
               <i class="fa fa-users"></i> Utilisateurs Control <div class="pull-right"><span class="caret"></span></div>
             </a>
@@ -57,65 +62,38 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <ol class="breadcrumb">
             
           </ol>
-          <h1>Manager les Utilisateurs</h1>
-          <p>Voiçi le tableau des utilisateurs</p>
-
-          <div class="row margin-bottom-30">
-            <div class="col-md-12">
-              <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre d'enseignant <span class="badge">
-                <?php
-                     echo $client->getTeacherCount($clients); 
-                ?>
-                </span></a></li>
-                <li class="active"><a href="#">Nombre d'éleve <span class="badge">
-                <?php
-                     echo $client->getStudentCount($clients); 
-                ?>  
-                </span></a></li>
-              </ul>          
-            </div>
-          </div> 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="table-responsive">
-                <h4 class="margin-bottom-15">Tableau d'utilisateurs</h4>
-                <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                      <th>Email</th>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Type</th>
-                      <th>Supprimer</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                        $clients = $client->getClients(); 
-                        foreach ($clients as $cl) {
-                          $type = $cl['isStudent'] =='1' ? 'Eleve' : 'Enseignant';
-                          echo "<tr>" ; 
-                          echo "<td>".$cl['utilisateur_email']."</td>";
-                          echo "<td>".$cl['name']."</td>";
-                          echo "<td>".$cl['lastname']."</td>";
-                          echo "<td>".$type."</td>";
-                          echo "<td>
-                          <form method='post' action='../../actions/deleteUser.php?email=".$cl['utilisateur_email']."'>       
-                          <button class='btn btn-danger' name='user_admin' type='submit'>Delete</button>
-                          </form></td>";
-                        }
-                    ?>
-                  </tbody>
-                </table>
-                <br>
-              </div>
-              <br>
-              
-            </div>
-          </div>
+          <h1>
+            <?php
+              echo $current['title']; 
+            ?>
+          </h1> 
+          <p>
+            <?php
+            echo $current['content'];  
+            ?>
+          </p>
+          <?php
+          echo '<a href="GoModifyCour.php?id='.$current['id'].'" class="btn btn-success">Modifier</a>'
+          ?>
+          <button class='btn btn-danger' name='retour' type='submit'><a href="CoursControl.php">Retour</a></button>
         </div>
       </div>
+      <style>
+        .templatemo-content {
+        position: relative;
+        }
+
+        .btn-success {
+        position: absolute;
+        top: 70px; 
+        right: 70px;
+        }
+        .btn-danger {
+        position: absolute;
+        top: 120px; 
+        right: 70px;
+        }
+      </style>
 
       <!-- Modal -->
       <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

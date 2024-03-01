@@ -1,18 +1,19 @@
 <?php
-    require_once "../../../auth/requireAuth.php";
-    require_once "../../../../controllers/ClientController.php";
-    $clientController  = new ClientController();
-    $email = $_SESSION['email'];
-    $current = $clientController->getClientByEmail($email);
-    $role = $clientController->getClientRole($email);
-
-    
+    //require_once "../../../auth/requireAuth.php";
+require_once "../../../../controllers/CoursController.php";
+$coursController = new CoursController();
+$id = $_GET['id'];
+if(!isset($id)) {
+    header("location: ListCours.php");
+    exit(0);
+}
+$course = $coursController->getSingleCours($id);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +22,6 @@
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-<<<<<<< HEAD
     <link href="../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -30,16 +30,6 @@
     <link rel="stylesheet" href="../../../../../assets/css/templatemo-cyborg-gaming.css">
     <link rel="stylesheet" href="../../../../../assets/css/owl.css">
     <link rel="stylesheet" href="../../../../../assets/css/animate.css">
-=======
-    <link href="../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../../../../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../../../../assets/css/templatemo-cyborg-gaming.css">
-    <link rel="stylesheet" href="../../../../assets/css/owl.css">
-    <link rel="stylesheet" href="../../../../assets/css/animate.css">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
@@ -49,7 +39,6 @@ https://templatemo.com/tm-579-cyborg-gaming
 
 -->
   </head>
-
 
 <body>
 
@@ -72,7 +61,7 @@ https://templatemo.com/tm-579-cyborg-gaming
         <div class="row">
             <div class="col-12">
             <?
-                  include "../../../components/navbar.php"; 
+                  include "./../../../../components/navbar.php"; 
                 ?>
             </div>
         </div>
@@ -85,58 +74,96 @@ https://templatemo.com/tm-579-cyborg-gaming
       <div class="col-lg-12">
         <div class="page-content">
 
-          <!-- ***** Banner Start ***** -->
+          <!-- ***** Featured Start ***** -->
           <div class="row">
             <div class="col-lg-12">
-              <center>
-              <div class="main-profile ">
+              <div class="feature-banner header-text">
                 <div class="row">
-                  <div class="col-lg-4">
-
-                    <img src="../../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
-
-                    <img src="../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
+                  <div class="col-lg-12">
+                      <?php
+                        echo '<center> <h1 style="color: #0eaedb;">'.$course["title"].'</h1><br> </center>';
+                      ?>
 
                   </div>
-                  <div class="col-lg-4 align-self-center">
-                    <div class="main-info header-text">
-                      <span>
-                          <?php
-                            print_r($role)  ;
-                          ?>
-                      </span> <br>
-                        <br><h4>
-                            <?php
-                                echo $current['name']." ".$current['lastname'];
-                            ?>
-                        </h4>
+                  <style>
+                    .col-lg-8 {
+                      margin: auto;
+                      display: block;
+                    }
+                  </style>
+                  <div class="col-lg-8">                 
+                    <div class="thumb">                   
+                    </div>                 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Featured End ***** -->
 
-                      <p>tu veux te déconnecter ? <br> Cliquez ici</p>
-                      <form action="../../../auth/logout.php">
-                      <div class="main-border-button">
-                        <div class="logout">
-                        <a><button type="submit" >Déconnexion</button></a>
-                        </div>
-                      </div>
-                      </form>
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                
+              </div>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    
+                      <center>
+                    <div class="col-lg-6">
+                    
+                      <div class="left-info">
+                        <style>
+                          .center {
+                            text-align: center;
+                          }
+                        </style>
+                            <h4>Date d'ajout :
+                                <?php
+                                    echo $course['created_at'];
+                                ?>
+                            </h4>
                       
-                      <div class="main-border-button">
-                      <div class="supprimer">
-                        <a href="validerSup.php">Supprimer le compte</a>
                       </div>
-                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                    </center>
+                    </div>
+                    <center>
+                    <div class="col-lg-4">
+                      <p style="color: #fff;">
+                          <?php
+                            echo $course['content'];
+                          ?>
+                      </p>
+                    </div>
+                  </center>
+                    <div class="col-lg-12">
                       
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="main-border-button">
+                      <a href="ListCours.php">Retourner</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div> 
-              </center> 
+              </div>
             </div>
           </div>
+          <!-- ***** Details End ***** -->
+
+          <!-- ***** Other Start ***** -->
+
+          <!-- ***** Other End ***** -->
+
         </div>
       </div>
     </div>
-  </div>          
+  </div>
+  
   <footer>
     <div class="container">
       <div class="row">
@@ -150,9 +177,9 @@ https://templatemo.com/tm-579-cyborg-gaming
   </footer>
 
 
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-<<<<<<< HEAD
   <script src="../../../../../vendor/jquery/jquery.min.js"></script>
   <script src="../../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -161,16 +188,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="../../../../../assets/js/tabs.js"></script>
   <script src="../../../../../assets/js/popup.js"></script>
   <script src="../../../../../assets/js/custom.js"></script>
-=======
-  <script src="../../../../vendor/jquery/jquery.min.js"></script>
-  <script src="../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="../../../../assets/js/isotope.min.js"></script>
-  <script src="../../../../assets/js/owl-carousel.js"></script>
-  <script src="../../../../assets/js/tabs.js"></script>
-  <script src="../../../../assets/js/popup.js"></script>
-  <script src="../../../../assets/js/custom.js"></script>
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
 
 
   </body>

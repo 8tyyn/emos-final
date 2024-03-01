@@ -1,3 +1,12 @@
+<?php
+require_once "../../auth/requireAdminAuth.php";
+
+  require_once "../../../controllers/CoursController.php";
+  $coursController = new CoursController() ;
+  $cours = $coursController->getAllCours();
+  $count= $coursController->getCoursesCount($cours);
+
+?>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -39,15 +48,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <li><a href="UserControl.php">Utilisateurs</a></li>
             </ul>
           </li>
-          <li class="sub open">
-            <a href="javascript:;">
-              <i class="fa fa-cubes"></i> Cours Control <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="CoursControlSimples.php">Simples</a></li>
-              <li><a href="CoursControlAvancees.php">Avancées</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="CoursControl.php"><i class="fa fa-cubes"></i>Cours Control</a></li>
           <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
@@ -63,69 +64,71 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           <div class="row margin-bottom-30">
             <div class="col-md-12">
               <ul class="nav nav-pills">
-                <li class="active"><a href="#">Nombre de cours Avancés <span class="badge">4</span></a></li>
+                <li class="active"><a href="#">Nombre de cours <span class="badge">
+                            <?php
+                                echo $count ;
+                            ?>
+                        </span></a></li>
               </ul>          
             </div>
           </div> 
           <div class="row">
             <div class="col-md-12">
-              <div class="btn-group pull-right" id="templatemo_sort_btn">
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">First Name</a></li>
-                  <li><a href="#">Last Name</a></li>
-                  <li><a href="#">Username</a></li>
-                </ul>
-              </div>
               <div class="table-responsive">
-                <h4 class="margin-bottom-15">Tableau de Cours Avancés</h4>
+                <h4 class="margin-bottom-15">Tableau de Cours</h4>
                 <table class="table table-striped table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>Nom</th>
-                      <th>Description</th>
+                      <th>Titre</th>
+                      <th>Contenu</th>
                       <th></th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>Smith</td>     
-                      <td><span class="btn btn-primary"><a href="">Voir</a></span></td>              
-                      <td><span class="btn btn-primary"><a href="">Modifier</a></span>
-                          <span class="btn btn-primary"><a href="">Supprimer</a></span></td>
-                    </tr>           
+                    <?php
+                        foreach ($cours as $cs) {
+                            echo "<tr>"; 
+                            echo "<td>".$cs['title']."</td>";
+                            echo "<td>".$cs['content']."</td>";
+                      
+                            echo '<td><span class="btn btn-primary"><a href="VoirCours.php?id='.$cs['id'].'">Voir</a></span></td>';
+                            echo '<td><span class="btn btn-success"><a href="GoModifyCour.php?id='.$cs['id'].'">Modifier</a></span>';
+                            echo '<span class="btn btn-danger"><a href="../../actions/cours/deleteCours.php?id='.$cs['id'].'">Supprimer</a></span></td>';
+                            echo "</tr>"; 
+                          }
+                    ?>
                   </tbody>
                 </table>
                 <br>
               </div>
               <br>
+              <form method="POST">
               <div class="table-responsive">
+              <h4 class="margin-bottom-15">Partie d'ajout d'un cours</h4>
                 <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Nom</label>
-                  <input type="text" class="form-control" id="firstName" value="">                  
-                </div>
-                <div class="col-md-6 margin-bottom-15">
-                  <label for="lastName" class="control-label">Description</label>
-                  <input type="text" class="form-control" id="lastName" value="">                 
+                  <label for="firstName" class="control-label">Titre</label>
+                  <input type="text" class="form-control" id="firstName" name="title">                  
                 </div>
                 <div class="row">
                 </div>
               </div>
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
-                  <label for="firstName" class="control-label">Lien</label>
-                  <input type="text" class="form-control" id="firstName" value="">                  
+                  <label for="firstName" class="control-label">Contenu</label>
+                  <textarea name="content" class="form-control" id="" cols="30" rows="10"></textarea>                  
                 </div>
                 <div class="row">
                 </div>
               </div>
               <div class="table-responsive">
                 <div class="col-md-6 margin-bottom-15">
-                    <span class="btn btn-primary"><a href="">Ajouter cours</a></span>                
+                    <button class="btn btn-success" type="submit" name="save">Ajouter cours</button>                
                   </div>
               </div>
             </div>
+              </form>
+         
           </div>
         </div>
       </div>
@@ -138,10 +141,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
-            <div class="modal-footer">
-              <a href="sign-in.html" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+              <?php
+              include "../../components/Logout.php";
+              ?>
           </div>
         </div>
       </div>
@@ -152,3 +154,20 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
     <script src="../../js/templatemo_script.js"></script>
   </body>
 </html>
+<?php 
+        try{
+          if(isset($_POST['save'])) {
+            $title = $_POST['title']; 
+            $content = $_POST['content'];
+            if($coursController->create($title,$content,$_SESSION['email'])) {
+                echo '<h1 class="alert-success alert">Added successfully</h1>';
+            }
+            else {
+              echo "Cannot create cours";
+            }
+          }
+        }
+        catch(Exception $e) {
+            echo $e; 
+        }
+?>
