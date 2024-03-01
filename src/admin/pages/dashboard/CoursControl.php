@@ -159,7 +159,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           if(isset($_POST['save'])) {
             $title = $_POST['title']; 
             $content = $_POST['content'];
-            if($coursController->create($title,$content,"3ASSBA@gmail.com")) {
+            if($coursController->create($title,$content,$_SESSION['email'])) {
                 echo '<h1 class="alert-success alert">Added successfully</h1>';
             }
             else {
