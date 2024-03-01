@@ -1,5 +1,5 @@
 <?php
-    require_once "../../../../auth/requireAuth.php";
+    require_once "../../../auth/requireAuth.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +14,14 @@
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../../../../../../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../../../../../../assets/css/templatemo-cyborg-gaming.css">
-    <link rel="stylesheet" href="../../../../../../assets/css/owl.css">
-    <link rel="stylesheet" href="../../../../../../assets/css/animate.css">
+    <link rel="stylesheet" href="../../../../../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../../../../../assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="../../../../../assets/css/owl.css">
+    <link rel="stylesheet" href="../../../../../assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
@@ -72,7 +72,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="feature-banner header-text">
                 <div class="row">
                   <div class="col-lg-12">
-                   <center> <h1 style="color: #0eaedb;">TITRE</h1><br> </center>
+                   <center> <h1 style="color: #0eaedb;">Liste Des Cours</h1><br> </center>
                   </div>
                   <style>
                     .col-lg-8 {
@@ -91,57 +91,27 @@ https://templatemo.com/tm-579-cyborg-gaming
           <!-- ***** Featured End ***** -->
 
           <!-- ***** Details Start ***** -->
-          <div class="game-details">
-            <div class="row">
-              <div class="col-lg-12">
-                
+          </div>
+          <!-- ***** Details End ***** -->
+          
+          <!-- ***** Other Start ***** -->
+          <center>
+          <div class="gaming-library">
+            <div class="col-lg-12">
+              <div class="heading-section">
               </div>
-              <div class="col-lg-12">
-                <div class="content">
-                  <div class="row">
-                    
-                      <center>
-                    <div class="col-lg-6">
-                    
-                      <div class="left-info">
-                        <style>
-                          .center {
-                            text-align: center;
-                          }
-                        </style>
-                        <div class="center">
-                        
-                          <h4 style="color: #0eaedb;">AJOUTER PAR FOULEN</h4>
-                          
-                        </div>
-                      
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                    </center>
-                    </div>
-                    <center>
-                    <div class="col-lg-4">
-                      <p style="color: #fff;">CONTENU</p>
-                    </div>
-                  </center>
-                    <div class="col-lg-12">
-                      
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="main-border-button">
-                      <a href="../../main/simple.php">Retourner</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="item">
+                <ul>
+                  <li><h4>Titre</h4><span>lakaka</span></li>
+                  <li><h4>Contenu</h4><span>lakaka</span></li>
+                  <li><h4>Ajouter par</h4><span>lakaka</span></li>
+                  <li><h4>Date d'ajout</h4><span>lakaka</span></li>
+                  <li><div class="main-border-button"><a href="">Voir</a></div></li>
+                </ul>
               </div>
             </div>
           </div>
-          <!-- ***** Details End ***** -->
-
-          <!-- ***** Other Start ***** -->
-
+          </center>
           <!-- ***** Other End ***** -->
 
         </div>
@@ -165,14 +135,14 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-  <script src="../../../../../../vendor/jquery/jquery.min.js"></script>
-  <script src="../../../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../../../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="../../../../../../assets/js/isotope.min.js"></script>
-  <script src="../../../../../../assets/js/owl-carousel.js"></script>
-  <script src="../../../../../../assets/js/tabs.js"></script>
-  <script src="../../../../../../assets/js/popup.js"></script>
-  <script src="../../../../../../assets/js/custom.js"></script>
+  <script src="../../../../../assets/js/isotope.min.js"></script>
+  <script src="../../../../../assets/js/owl-carousel.js"></script>
+  <script src="../../../../../assets/js/tabs.js"></script>
+  <script src="../../../../../assets/js/popup.js"></script>
+  <script src="../../../../../assets/js/custom.js"></script>
 
 
   </body>

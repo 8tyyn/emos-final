@@ -66,7 +66,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                   <div class="col-md-6 margin-bottom-15">
                       <label for="firstName" class="control-label">Titre</label>
                       <?php
-                      echo "<input type='text class='form-control' name='title' value=".$title." >";
+                      echo "<input type='text' class='form-control' name='title' value=".$title." >";
                       ?>
                   </div>
                   <div class="row">
@@ -83,7 +83,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                   <div class="row">
                   </div>
               </div>
-              <button class='btn btn-success' name='modifier_cour' type='submit'><a href="VoirCours.php">Enregistrer</a></button>
+              <button class='btn btn-success' name='modifier_cour' type='submit'>Enregistrer</button>
               <button class='btn btn-danger' name='retour' type='submit'><a href="VoirCours.php">Retour</a></button>
         </div>
           </form>
