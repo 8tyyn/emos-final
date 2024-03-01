@@ -2,5 +2,5 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: http://127.0.0.1/WEBSITE/EMOS/login.html");
+header("Location:  /emos-final/src/client/pages/login.html");
 ?>

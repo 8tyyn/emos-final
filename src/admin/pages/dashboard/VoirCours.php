@@ -1,5 +1,7 @@
-<?php 
-  require_once "../../controllers/CoursController.php"; 
+<?php
+require_once "../../auth/requireAdminAuth.php";
+
+  require_once "../../../controllers/CoursController.php";
   $cours = new CoursController(); 
 
     $id = $_GET['id']; 
@@ -101,10 +103,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
-            <div class="modal-footer">
-              <a href="sign-in.html" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+              <?php
+              include "../../components/Logout.php";
+              ?>
           </div>
         </div>
       </div>

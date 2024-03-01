@@ -1,51 +1,3 @@
-<?php
-session_start();
-$servername = "localhost";
-$serveruser = "root";
-$password = "";
-$dsn = "mysql:host=$servername;dbname=emos";
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    http_response_code(200);
-}
-try {
-    $BDD = new PDO($dsn, $serveruser, $password);
-    echo "connexion reussi";
-} catch (PDOException $e) {
-    echo "erreur" . $e->getMessage();
-}
-echo $_POST['email'];
-   $email = $_POST['email'];
-   $password = $_POST['password'];
-   if(!isset($_POST['password']) || !isset($_POST['email']) ) {
-        echo "Invalid"; 
-        exit();
-    }
-    try {
-        $query = "SELECT * FROM vc_users_admin WHERE admin_email=:email AND password=:password";
-    $stmnt = $BDD->prepare($query);
-    $stmnt->bindParam(':email',$email);
-    $stmnt->bindParam(':password',$password);
-    $stmnt->execute();
-    $rowCount = $stmnt->rowCount();
-    $res = $stmnt->fetch(PDO::FETCH_ASSOC);
-    }
-    catch (Exception $e) {
-        echo $e; 
-    }
-    if($rowCount !=0) {
-        print_r($res); 
-        $_SESSION['email']= $email ;
-        $_SESSION['password']=$password; 
-        header('location: index.php'); 
-        exit(); 
-    }
-    else {
-        header('location: loginAdmin.php'); 
-}   
-
-
-
-?>
 <!doctype html>
 
 <html lang="en"> 
@@ -66,16 +18,16 @@ echo $_POST['email'];
 
    <div class="signin"> 
 
-    <div class="content"> 
-    <form method="POST" action="loginAdmin.php">
+    <div class="content">
+
 
      <h2>ESPACE ADMIN</h2> 
 
-     <div class="form"> 
+     <form class="form" method="post" action="../auth/login.php">
 
       <div class="inputBox"> 
 
-       <input type="text" name="email" required> <i>Username</i> 
+       <input type="text" name="email" required> <i>Email</i>
 
       </div> 
 
@@ -95,11 +47,11 @@ echo $_POST['email'];
 
       </div> 
 
-     </div> 
-    </form>
-    </div> 
+     </form>
 
-   </div> 
+    </div>
+
+   </div>
 
   </section> <!-- partial --> 
 

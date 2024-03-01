@@ -60,9 +60,6 @@ try {
             global $BDD ;
             $date = new DateTime();
             $formated = $date->format('Y-m-d');
-            echo $title ;
-            echo $content ;
-            echo $written_by ;
             $query = "INSERT INTO cours(`title`, `content`, `written_by`, `updated_at`, `created_at`) VALUES(:title,:content,:written_by,:updated_at,:created_at)";
             $stmnt = $BDD->prepare($query);
             $stmnt->bindParam(":title",$title);

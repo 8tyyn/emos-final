@@ -1,5 +1,5 @@
 <?php 
-require_once "../controllers/ClientController.php"; 
+require_once "../../controllers/ClientController.php";
 $client = new ClientController() ;  
         $email = $_GET['email']; 
         if ($client->deleteClient($email)) {

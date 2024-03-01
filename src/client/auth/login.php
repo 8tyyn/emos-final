@@ -20,7 +20,7 @@ try {
         exit();
     }
     try {
-        $query = "SELECT * FROM vc_users_client WHERE utilisateur_email=:email AND password=:password";
+        $query = "SELECT * FROM personne WHERE email=:email AND password=:password";
         $stmnt = $BDD->prepare($query);
         $stmnt->bindParam(':email',$email);
         $stmnt->bindParam(':password',$password);
@@ -40,7 +40,7 @@ try {
         exit(); 
     }
     else {
-        header('location: ../pages/login.html'); 
+        header('location:  /emos-final/src/client/pages/login.html');
 }   
 
 

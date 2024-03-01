@@ -1,5 +1,7 @@
-<?php 
-  require_once "../../controllers/CoursController.php";
+<?php
+require_once "../../auth/requireAdminAuth.php";
+
+  require_once "../../../controllers/CoursController.php";
   $coursController = new CoursController() ;
   $cours = $coursController->getAllCours();
   $count= $coursController->getCoursesCount($cours);
@@ -139,10 +141,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
-            <div class="modal-footer">
-              <a href="sign-in.html" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+              <?php
+              include "../../components/Logout.php";
+              ?>
           </div>
         </div>
       </div>
@@ -159,10 +160,10 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             $title = $_POST['title']; 
             $content = $_POST['content'];
             if($coursController->create($title,$content,"3ASSBA@gmail.com")) {
-              header("location: https://www.google.com");
+                echo '<h1 class="alert-success alert">Added successfully</h1>';
             }
             else {
-              echo "L3ASSBA";
+              echo "Cannot create cours";
             }
           }
         }

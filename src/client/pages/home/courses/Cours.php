@@ -1,5 +1,13 @@
 <?php
-    require_once "../../../auth/requireAuth.php";
+    //require_once "../../../auth/requireAuth.php";
+require_once "../../../../controllers/CoursController.php";
+$coursController = new CoursController();
+$id = $_GET['id'];
+if(!isset($id)) {
+    header("location: ListCours.php");
+    exit(0);
+}
+$course = $coursController->getSingleCours($id);
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +80,10 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="feature-banner header-text">
                 <div class="row">
                   <div class="col-lg-12">
-                   <center> <h1 style="color: #0eaedb;">TITRE</h1><br> </center>
+                      <?php
+                        echo '<center> <h1 style="color: #0eaedb;">'.$course["title"].'</h1><br> </center>';
+                      ?>
+
                   </div>
                   <style>
                     .col-lg-8 {
@@ -109,11 +120,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                             text-align: center;
                           }
                         </style>
-                        <div class="center">
-                        
-                          <h4 style="color: #0eaedb;">AJOUTER PAR FOULEN</h4>
-                          
-                        </div>
+                            <h4>Date d'ajout :
+                                <?php
+                                    echo $course['created_at'];
+                                ?>
+                            </h4>
                       
                       </div>
                     </div>
@@ -122,7 +133,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <center>
                     <div class="col-lg-4">
-                      <p style="color: #fff;">CONTENU</p>
+                      <p style="color: #fff;">
+                          <?php
+                            echo $course['content'];
+                          ?>
+                      </p>
                     </div>
                   </center>
                     <div class="col-lg-12">
@@ -130,7 +145,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-12">
                       <div class="main-border-button">
-                      <a href="../../main/simple.php">Retourner</a>
+                      <a href="ListCours.php">Retourner</a>
                       </div>
                     </div>
                   </div>

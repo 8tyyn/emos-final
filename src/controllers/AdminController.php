@@ -86,6 +86,15 @@ try {
             return false; 
             }
         }
+        public function isSup($email) {
+            global $BDD;
+            $query = "SELECT * FROM admin WHERE email=:email";
+            $stmnt = $BDD->prepare($query);
+            $stmnt->bindParam(':email',$email);
+            $stmnt->execute();
+            $res = $stmnt->fetch(PDO::FETCH_ASSOC);
+            return $res['isSup']=='1';
+        }
         
     }
 

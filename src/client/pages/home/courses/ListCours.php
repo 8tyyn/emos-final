@@ -1,5 +1,9 @@
 <?php
-    require_once "../../../auth/requireAuth.php";
+    //require_once "../../../auth/requireAuth.php";
+require_once "../../../../controllers/CoursController.php";
+require_once "../../../../helpers/TruncateString.php";
+$coursController = new CoursController();
+$courses = $coursController->getAllCours();
 ?>
 
 <!DOCTYPE html>
@@ -99,20 +103,19 @@ https://templatemo.com/tm-579-cyborg-gaming
           <div class="gaming-library">
             <div class="col-lg-12">
               <div class="heading-section">
-              </div>
-              <div class="item">
-                <ul>
-                  <li><h4>Titre</h4><span>lakaka</span></li>
-                  <li><h4>Contenu</h4><span>lakaka</span></li>
-                  <li><h4>Ajouter par</h4><span>lakaka</span></li>
-                  <li><h4>Date d'ajout</h4><span>lakaka</span></li>
-                  <li><div class="main-border-button"><a href="">Voir</a></div></li>
-                </ul>
-              </div>
+                <?php
+                    foreach ($courses as $cs) {
+                        echo " <div class='item'><ul>";
+                        echo "<li><h4>Titre</h4><span>".$cs["title"]."</span></li>";
+                        echo "<li><h4>Content</h4><span>".truncateString($cs["content"],10)."</span></li>";
+                        echo "<li><h4>Date d'ajout</h4><span>".$cs["created_at"]."</span></li>";
+                        echo "<li><div class='main-border-button'><a href='Cours.php?id=".$cs['id']."'>Voir</a></div></li>";
+                        echo "</ul>";
+                    }
+                ?>
             </div>
           </div>
           </center>
-          <!-- ***** Other End ***** -->
 
         </div>
       </div>

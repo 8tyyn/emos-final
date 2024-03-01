@@ -1,5 +1,11 @@
 <?php
     require_once "../../../auth/requireAuth.php";
+    require_once "../../../../controllers/ClientController.php";
+    $clientController  = new ClientController();
+    $email = $_SESSION['email'];
+    $current = $clientController->getClientByEmail($email);
+    $role = $clientController->getClientRole($email);
+
     
 ?>
 <!DOCTYPE html>
@@ -86,23 +92,30 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="main-profile ">
                 <div class="row">
                   <div class="col-lg-4">
-<<<<<<< HEAD
+
                     <img src="../../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
-=======
+
                     <img src="../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
+
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                      <span>Enseignant</span> <br>
-                      <?php
-                      echo "<br> <h4>" . $row['name'] . " " . $row['lastname'] . "</h4>";
-                      ?>
+                      <span>
+                          <?php
+                            print_r($role)  ;
+                          ?>
+                      </span> <br>
+                        <br><h4>
+                            <?php
+                                echo $current['name']." ".$current['lastname'];
+                            ?>
+                        </h4>
+
                       <p>tu veux te déconnecter ? <br> Cliquez ici</p>
-                      <form action="logout.php">
+                      <form action="../../../auth/logout.php">
                       <div class="main-border-button">
                         <div class="logout">
-                        <a href="../../auth/logout.php">Déconnexion</a>
+                        <a><button type="submit" >Déconnexion</button></a>
                         </div>
                       </div>
                       </form>

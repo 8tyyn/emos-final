@@ -1,6 +1,7 @@
-<?php 
-   require_once "../../controllers/AdminController.php"; 
-   require_once "../../controllers/UserController.php"; 
+<?php
+    require_once "../../auth/requireAdminAuth.php";
+   require_once "../../../controllers/AdminController.php";
+   require_once "../../../controllers/UserController.php";
   $admin = new AdminController() ;  
 ?>
 
@@ -85,16 +86,22 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                   </thead>
                   <tbody>
                     <?php
-                        $admins = $admin->getAdmins(); 
+                        $admins = $admin->getAdmins();
+                        $isSup = $admin->isSup($_SESSION['email']);
                         foreach ($admins as $ad) {
                           echo "<tr>" ; 
                           echo "<td>".$ad['admin_email']."</td>";
                           echo "<td>".$ad['name']."</td>";
                           echo "<td>".$ad['lastname']."</td>";
-                          echo "<td>
+                          if($isSup) {
+                              echo "<td>
                           <form method='post' action='../../actions/deleteAdmin.php?email=".$ad['admin_email']."'>       
                           <button class='btn btn-danger' name='delete_admin' type='submit'>Delete</button>
                           </form></td>";
+                          }
+                          else {
+                              echo "<td></td>";
+                          }
                         }
                     ?>
                   </tbody>
@@ -175,10 +182,9 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
-            <div class="modal-footer">
-              <a href="sign-in.html" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+              <?php
+                include "../../components/Logout.php";
+              ?>
           </div>
         </div>
       </div>

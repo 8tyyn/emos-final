@@ -73,6 +73,24 @@ try {
                 return false;
             }
         }
+        public function getClientRole($email) {
+            global $BDD;
+            $queryClient = "SELECT * FROM vc_users_client WHERE utilisateur_email=:email";
+            $stmntClient = $BDD->prepare($queryClient);
+            $stmntClient->bindParam(":email",$email);
+            $stmntClient->execute();
+            $resClient = $stmntClient->fetch(PDO::FETCH_ASSOC);
+            if(count($resClient)==1) return "Admin";
+            return $resClient["isStudent"]=="1" ? "Etudiant" : "Enseignant";
+        }
+        public function getClientByEmail($email) {
+                global $BDD;
+                $query = "SELECT * FROM personne WHERE email=:email";
+                $stmnt = $BDD->prepare($query);
+                $stmnt->bindParam(":email",$email);
+                $stmnt->execute();
+                return $stmnt->fetch(PDO::FETCH_ASSOC);
+        }
     }
 
 ?>
