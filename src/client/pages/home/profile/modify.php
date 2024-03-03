@@ -15,7 +15,6 @@ require_once "../../../auth/requireAuth.php";
   <title>Cyborg - Awesome HTML5 Template</title>
 
   <!-- Bootstrap core CSS -->
-<<<<<<< HEAD
   <link href="../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -24,16 +23,6 @@ require_once "../../../auth/requireAuth.php";
   <link rel="stylesheet" href="../../../../../assets/css/templatemo-cyborg-gaming.css">
   <link rel="stylesheet" href="../../../../../assets/css/owl.css">
   <link rel="stylesheet" href="../../../../../assets/css/animate.css">
-=======
-  <link href="../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="../../../../assets/css/fontawesome.css">
-  <link rel="stylesheet" href="../../../../assets/css/templatemo-cyborg-gaming.css">
-  <link rel="stylesheet" href="../../../../assets/css/owl.css">
-  <link rel="stylesheet" href="../../../../assets/css/animate.css">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <!--
 
@@ -86,11 +75,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="main-profile ">
                   <div class="row">
                     <div class="col-lg-4">
-<<<<<<< HEAD
                       <img src="../../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
-=======
-                      <img src="../../../../assets/images/profile2.jpg" alt="" style="border-radius: 23px;">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
                     </div>
                     <div class="col-lg-4 align-self-center">
                       <div class="main-info header-text">
