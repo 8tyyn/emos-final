@@ -14,7 +14,7 @@
         <li><a href="/emos-final/src/client/pages/home/index.php">Home</a></li>
         <li><a href="introduction.php">Introduction</a></li>
         <li><a href="#">Télécharger</a></li>
-        <li><a href="/emos-final/src/client/pages/home/profile/profile.php">
+        <li><a href="/WEBSITE/EMOS/src/client/pages/home/profile/profile.php">
                 <?php
 
                 echo " " . $row['lastname'] . "";

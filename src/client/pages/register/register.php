@@ -74,8 +74,8 @@ exit();
             </div>
             <div class="user-box">
                 <select name="student" id="">
-                    <option value="0">Teacher</option>
-                    <option value="1">Student</option>
+                    <option value="0">Enseignant</option>
+                    <option value="1">Eleve</option>
                 </select>
             </div>
             <button type="submit" name="ok" class="ok" href="#" onclick="validateForm()">

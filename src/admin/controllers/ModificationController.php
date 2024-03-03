@@ -16,7 +16,7 @@ try {
         public function getAllModifications($id) {
             global $BDD; 
             $query = "SELECT * FROM modification WHERE cours_id=:id";
-            $stmnt = $BDD->prepare($query): 
+            $stmnt = $BDD->prepare($query);
             $stmnt->bindParam(":id",$id); 
             $stmnt->execute(); 
             $rowCount = $stmnt->rowCount();

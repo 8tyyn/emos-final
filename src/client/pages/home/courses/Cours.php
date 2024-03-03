@@ -1,5 +1,5 @@
 <?php
-    //require_once "../../../auth/requireAuth.php";
+require_once "../../../auth/requireAuth.php";
 require_once "../../../../controllers/CoursController.php";
 $coursController = new CoursController();
 $id = $_GET['id'];
@@ -60,9 +60,34 @@ https://templatemo.com/tm-579-cyborg-gaming
     <div class="container">
         <div class="row">
             <div class="col-12">
-            <?
-                  include "./../../../../components/navbar.php"; 
+            <nav class="main-nav">
+             <a href="index.php" class="logo">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../../../../assets/images/logoo.png" alt="">
+             </a>
+
+               <div class="search-input">
+                 <form id="search" action="#">
+                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                    <i class="fa fa-search"></i>
+                  </form>
+                 </div>
+            <ul class="nav">
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/index.php" class="active">Home</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/main/introduction.php">Introduction</a></li>
+              <li><a href="https://drive.google.com/file/d/1fY7BvHGxAa7bVT8DSzPMLo_6C2IUmqR6/view?usp=sharing">Télécharger</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/profile/profile.php">
+                <?php
+
+                echo " " . $row['lastname'] . "";
                 ?>
+                <img src="../../../../../assets/images/profile-header.jpg" alt="">
+            </a></li>
+             </ul>
+             <a class='menu-trigger'>
+                <span>Menu</span>
+               </a>
+ 
+             </nav>
             </div>
         </div>
     </div>

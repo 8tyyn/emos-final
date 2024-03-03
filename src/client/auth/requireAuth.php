@@ -10,7 +10,7 @@ try {
 }
 session_start();
 if (!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
-    header("Location: /emos-final/src/client/pages/login.html");
+    header("Location: /WEBSITE/EMOS/src/client/pages/login.html");
     exit();
 }
 $email = $_SESSION["email"];
@@ -23,7 +23,7 @@ $stmnt->execute();
 $rowCount = $stmnt->rowCount();
 $row = $stmnt->fetch(PDO::FETCH_ASSOC); 
 if ($rowCount == 0) {
-    header("location: /emos-final/src/client/pages/login.html");
+    header("location: /WEBSITE/EMOS/src/client/pages/login.html");
 } else {
 ?>
 <?php

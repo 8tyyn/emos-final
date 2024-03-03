@@ -36,11 +36,11 @@ if($rowCount !=0) {
     print_r($res);
     $_SESSION['email']= $email ;
     $_SESSION['password']=$password;
-    header('location: /emos-final/src/admin/pages/dashboard/index.php');
+    header('location: /WEBSITE/EMOS/src/admin/pages/dashboard/index.php');
     exit();
 }
 else {
-    header('location:  /emos-final/src/admin/pages/loginAdmin.php');
+    header('location:  /WEBSITE/EMOS/src/admin/pages/loginAdmin.php');
 }
 
 

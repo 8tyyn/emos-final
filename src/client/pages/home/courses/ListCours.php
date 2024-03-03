@@ -1,5 +1,5 @@
 <?php
-    //require_once "../../../auth/requireAuth.php";
+require_once "../../../auth/requireAuth.php";
 require_once "../../../../controllers/CoursController.php";
 require_once "../../../../helpers/TruncateString.php";
 $coursController = new CoursController();
@@ -56,9 +56,34 @@ https://templatemo.com/tm-579-cyborg-gaming
     <div class="container">
         <div class="row">
             <div class="col-12">
-            <?
-                  include "./../../../../components/navbar.php"; 
+            <nav class="main-nav">
+             <a href="index.php" class="logo">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../../../../assets/images/logoo.png" alt="">
+             </a>
+
+               <div class="search-input">
+                 <form id="search" action="#">
+                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                    <i class="fa fa-search"></i>
+                  </form>
+                 </div>
+            <ul class="nav">
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/index.php">Home</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/main/introduction.php">Introduction</a></li>
+              <li><a href="https://drive.google.com/file/d/1fY7BvHGxAa7bVT8DSzPMLo_6C2IUmqR6/view?usp=sharing">Télécharger</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/profile/profile.php">
+                <?php
+
+                echo " " . $row['lastname'] . "";
                 ?>
+                <img src="../../../../../assets/images/profile-header.jpg" alt="">
+            </a></li>
+             </ul>
+             <a class='menu-trigger'>
+                <span>Menu</span>
+               </a>
+ 
+             </nav>
             </div>
         </div>
     </div>
@@ -114,6 +139,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                     }
                 ?>
             </div>
+            <div class="col-lg-12">
+                      <div class="main-border-button">
+                      <a href="/WEBSITE/EMOS/src/client/pages/home/index.php">Retourner</a>
+                      </div>
+                    </div>
           </div>
           </center>
 
@@ -122,17 +152,6 @@ https://templatemo.com/tm-579-cyborg-gaming
     </div>
   </div>
   
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2024 <a href="#">EMOS</a>. Tous droits réservés. 
-          
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">Tarbya.tn</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 
 

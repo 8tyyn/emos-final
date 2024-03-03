@@ -40,7 +40,7 @@ try {
         exit(); 
     }
     else {
-        header('location:  /emos-final/src/client/pages/login.html');
+        header('location:  /WEBSITE/EMOS/src/client/pages/login.html');
 }   
 
 

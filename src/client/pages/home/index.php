@@ -44,9 +44,34 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+            <nav class="main-nav">
+             <a href="index.php" class="logo">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../../../assets/images/logoo.png" alt="">
+             </a>
+
+               <div class="search-input">
+                 <form id="search" action="#">
+                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                    <i class="fa fa-search"></i>
+                  </form>
+                 </div>
+            <ul class="nav">
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/index.php" class="active">Home</a></li>
+              <li><a href="main/introduction.php">Introduction</a></li>
+              <li><a href="https://drive.google.com/file/d/1fY7BvHGxAa7bVT8DSzPMLo_6C2IUmqR6/view?usp=sharing">Télécharger</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/profile/profile.php">
                 <?php
-                  include "../../components/navbar.php"; 
+
+                echo " " . $row['lastname'] . "";
                 ?>
+                <img src="../../../../assets/images/profile-header.jpg" alt="">
+            </a></li>
+             </ul>
+             <a class='menu-trigger'>
+                <span>Menu</span>
+               </a>
+ 
+             </nav>
             </div>
         </div>
     </div>
@@ -130,11 +155,41 @@
           </div>
           <!-- ***** Most Popular End ***** -->
 
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <center id="first"><h4>les cours dynamique</h4></center>
+                </div>
+                <div class="row">
+                  <center>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="item">
+                      <img src="../../../../assets/images/welcome5.gif" alt="">
+                      <h4>autre cours<br><span>des programe ajoutés par les administrateurs<br>.</span></h4>
+                      <div class="main-button">
+                        <a href="/WEBSITE/EMOS/src/client/pages/home/courses/Cours.php">En Savoir Plus</a>
+                      </div>
+                    </div>
+                  </div>
+                  </center>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
           <!-- ***** Gaming Library Start ***** -->
           <div class="gaming-library">
             <div class="col-lg-12">
               <div class="heading-section">
-                <h4><em>Votre bibliothèque</em> d'application</h4>
+                <h4>Votre bibliothèque d'application</h4>
               </div>
               <div class="item">
                 <ul>
@@ -149,7 +204,7 @@
             </div>
             <div class="col-lg-12">
               <div class="main-button">
-                <a href="Profile/profile.html">Plus De Détails</a>
+                <a href="">Plus De Détails</a>
               </div>
             </div>
           </div>

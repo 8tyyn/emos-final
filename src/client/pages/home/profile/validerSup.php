@@ -15,7 +15,6 @@ require_once "../../../auth/requireAuth.php";
   <title>Cyborg - Awesome HTML5 Template</title>
 
   <!-- Bootstrap core CSS -->
-<<<<<<< HEAD
   <link href="../../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -24,16 +23,6 @@ require_once "../../../auth/requireAuth.php";
   <link rel="stylesheet" href="../../../../../assets/css/templatemo-cyborg-gaming.css">
   <link rel="stylesheet" href="../../../../../assets/css/owl.css">
   <link rel="stylesheet" href="../../../../../assets/css/animate.css">
-=======
-  <link href="../../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="../../../../assets/css/fontawesome.css">
-  <link rel="stylesheet" href="../../../../assets/css/templatemo-cyborg-gaming.css">
-  <link rel="stylesheet" href="../../../../assets/css/owl.css">
-  <link rel="stylesheet" href="../../../../assets/css/animate.css">
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <!--
 
@@ -65,9 +54,34 @@ https://templatemo.com/tm-579-cyborg-gaming
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <?
-          include "./../../../components/navbar.php";
-          ?>
+        <nav class="main-nav">
+             <a href="index.php" class="logo">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../../../../assets/images/logoo.png" alt="">
+             </a>
+
+               <div class="search-input">
+                 <form id="search" action="#">
+                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                    <i class="fa fa-search"></i>
+                  </form>
+                 </div>
+            <ul class="nav">
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/index.php" class="active">Home</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/main/introduction.php">Introduction</a></li>
+              <li><a href="https://drive.google.com/file/d/1fY7BvHGxAa7bVT8DSzPMLo_6C2IUmqR6/view?usp=sharing">Télécharger</a></li>
+              <li><a href="/WEBSITE/EMOS/src/client/pages/home/profile/profile.php" class="active">
+                <?php
+
+                echo " " . $row['lastname'] . "";
+                ?>
+                <img src="../../../../../assets/images/profile-header.jpg" alt="">
+            </a></li>
+             </ul>
+             <a class='menu-trigger'>
+                <span>Menu</span>
+               </a>
+ 
+             </nav>
         </div>
       </div>
     </div>
@@ -133,7 +147,6 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-<<<<<<< HEAD
   <script src="../../../../../vendor/jquery/jquery.min.js"></script>
   <script src="../../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -142,16 +155,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="../../../../../assets/js/tabs.js"></script>
   <script src="../../../../../assets/js/popup.js"></script>
   <script src="../../../../../assets/js/custom.js"></script>
-=======
-  <script src="../../../../vendor/jquery/jquery.min.js"></script>
-  <script src="../../../../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="../../../../assets/js/isotope.min.js"></script>
-  <script src="../../../../assets/js/owl-carousel.js"></script>
-  <script src="../../../../assets/js/tabs.js"></script>
-  <script src="../../../../assets/js/popup.js"></script>
-  <script src="../../../../assets/js/custom.js"></script>
->>>>>>> 26427a4b0ec5e20e9b85df3fd3edd24b9719e870
 
 
 </body>

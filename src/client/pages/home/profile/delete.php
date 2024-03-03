@@ -21,13 +21,13 @@ try {
     $email = $_SESSION['email'];
 
     
-    $stmt = $conn->prepare("DELETE FROM account WHERE email = :email");
+    $stmt = $conn->prepare("DELETE FROM personne WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
 
     
     session_destroy();
-    header('Location: login.html');
+    header('Location: /WEBSITE/EMOS/src/client/pages/login.html');
     exit();
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
